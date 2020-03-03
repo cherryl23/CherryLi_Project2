@@ -1,0 +1,149 @@
+<body style="background-color:#000000;">
+</body>
+
+  <h1>Find Colour #871111
+</h1>
+
+<div id='red'>
+  <label>🤢</label>
+  <input onchange="setRed(this.value)" max='255' min='0' step='1' type='range' value='255'>
+</div>
+<div id='green'>
+  <label>🥶</label>
+  <input onchange="setGreen(this.value)" max='255' min='0' step='1' type='range' value='0'>
+</div>
+<div id='blue'>
+  <label>👹</label>
+  <input onchange="setBlue(this.value)" max='255' min='0' step='1' type='range' value='0'>
+</div>
+<div id='alpha'>
+  <label>🐶</label>
+  <input onchange="setAlpha(this.value)" max='255' min='0' step='1' type='range' value='255'>
+</div>
+<div class="circle"></div>
+<!-- <canvas height='100' id='canvas' width='100'></canvas> -->
+
+  <div>
+    <button id="submit">Next</button>
+  </div>
+</form>
+ <style>
+ body {
+  padding: 1em;
+  margin: 1em;
+  text-align: center;
+  font-size: 30px;
+  color:white;
+  background: #84fab0;
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+canvas, .circle {
+  margin-top: 1em;
+  margin-left: 10vh;
+}
+
+.circle{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  background: white;
+  margin: 2rem auto;
+}
+
+label {
+  display: inline-block;
+  text-align: center;
+  width: 130px;
+}
+
+h1 {
+ text-align: center;
+ font-size:30px;
+ font-family: 'Lato', sans-serif;
+ margin-top: 2vh;
+ margin-left: 13vh;
+}
+
+button {
+ font-size: 12pt; 
+ font-family: 'Lato', sans-serif;
+  margin-left: 10vh;
+}
+</style>
+<script>
+
+let currentColor = {
+  red: 255,
+  green: 0,
+  blue: 0,
+  alpha: 255
+};
+
+function setRed(value){
+    currentColor.red = value;
+    reset();
+}
+function setBlue(value){
+    currentColor.blue = value;
+    reset();
+}
+function setGreen(value){
+    currentColor.green = value;
+    reset();
+}
+function setAlpha(value){
+    currentColor.alpha = value;
+    reset();
+}
+
+function reset(){
+    console.log(currentColor);
+    document.getElementsByClassName("circle")[0].style.background = "rgba("+currentColor.red+","+currentColor.green+","+currentColor.blue+","+currentColor.alpha+")";
+  
+}
+
+// $(() => {
+//   // let canvas = document.getElementById('canvas');
+//   // let ctx = canvas.getContext("2d");
+  
+//   // document.getElementsByClass("circle")[0].style.background = "rgba("+currentColor.red+","+currentColor.green+","+currentColor.blue+","+currentColor.alpha+")";
+  
+// //   function drawCircle(red, green, blue, alpha) {
+// //     let radius = 50;
+// //     let image = ctx.createImageData(2*radius, 2*radius);
+// //     let data = image.data;
+// //     for (let x = -radius; x < radius; x++) {
+// //       for (let y = -radius; y < radius; y++) {
+// //         let distance = Math.sqrt(x*x + y*y);
+        
+// //         if (distance > radius) {
+// //           continue;
+// //         }
+// //         let rowLength = 2*radius;
+// //         let adjustedX = x + radius; 
+// //         let adjustedY = y + radius; 
+// //         let pixelWidth = 4; 
+// //         let index = (adjustedX + (adjustedY * rowLength)) * pixelWidth;
+// //         data[index] = red;
+// //         data[index+1] = green;
+// //         data[index+2] = blue;
+// //         data[index+3] = alpha;
+// //       }
+// //     }
+
+// //     ctx.putImageData(image, 0, 0);
+// //   }
+  
+// //   $('#red,#green,#blue,#alpha').on('input', (e) => {
+// //     let colorName = $(e.target).parent('div').attr('id');
+// //     let value = parseInt(e.target.value, 10);
+// //     currentColor[colorName] = value;
+// //     let {red, green, blue, alpha} = currentColor;
+// //     requestAnimationFrame(() => drawCircle(red, green, blue, alpha));
+// //   });
+// //     let {red, green, blue, alpha} = currentColor;
+// //   drawCircle(red, green, blue, alpha);
+// // });
+</script>
